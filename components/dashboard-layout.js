@@ -19,7 +19,7 @@ export default function DashboardLayout({children, title}) {
           {
             menuItems.map((item, index) => (
               <Link key={`menu-${index}`} href={item.href}>
-                <a className={`py-2 px-4 rounded text-black${item.href === router.pathname ? ' bg-purple-500 text-white' : ''}`}>{item.label}</a>
+                <a className={`w-40 py-2 px-4 rounded text-black${item.href === router.pathname ? ' bg-purple-500 text-white' : ''}`}>{item.label}</a>
               </Link>
             ))
           }
