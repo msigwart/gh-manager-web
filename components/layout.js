@@ -12,7 +12,7 @@ export default function Layout({ children, title }) {
     </Head>
     <div className="container mx-auto px-4 min-h-screen relative">
       <Header/>
-      <main className={"py-7"}>
+      <main className={"pt-8 pb-16"}>
         {children}
       </main>
       <Footer/>
