@@ -3,6 +3,7 @@ import api from "../lib/api";
 import {useAuth} from "./auth.provider";
 import {useRouter} from "next/router";
 import {FaGithub} from "react-icons/fa";
+import {useEffect, useState} from "react";
 
 export default function Header() {
 
@@ -22,11 +23,18 @@ export default function Header() {
     }
   }
 
+  const [home, setHome] = useState('/')
+
+  useEffect(() => {
+    setHome(auth.user ? '/dashboard/repos' : '/');
+  }, [auth.user])
+
+
   return (
     <header>
-      <div className="flex flex-row justify-between items-center py-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center py-4">
         <div className="text-3xl font-bold">
-          <Link href="/">
+          <Link href={home}>
             <a className="text-black">GH Manager</a>
           </Link>
         </div>
