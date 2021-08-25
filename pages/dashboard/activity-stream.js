@@ -5,6 +5,7 @@ import ListLoader from "../../components/list-loader";
 import {GoGitPullRequest, GoIssueOpened} from "react-icons/go";
 import {toPrettyDate} from "../../utils";
 import authenticatedRoute from "../../components/authenticated-route";
+import Badge from "../../components/badge";
 
 function ActivityStream() {
 
@@ -36,9 +37,11 @@ function ActivityStream() {
               <li key={`issue-${index}`} className="my-8">
                 <div className="flex flex-row gap-2 items-center">
                   <p className="text-gray-500">{issue.repo.fullName}</p>
-                  <div className={`rounded-full text-xs py-1 px-3 ${isOpen ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
-                    {isOpen ? 'Open' : 'Closed'}
-                  </div>
+                  {
+                    isOpen ?
+                    <Badge color="green-800" background="green-200">Open</Badge> :
+                    <Badge color="red-800" background="red-200">Closed</Badge>
+                  }
                 </div>
                 <a href={issue.data.html_url} target="_blank" rel="noreferrer" className="flex flex-row items-center gap-2">
                   { isPullRequest ? <GoGitPullRequest/> : <GoIssueOpened/>}

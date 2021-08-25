@@ -3,8 +3,8 @@ import useSWR from "swr";
 import api from "../../lib/api";
 import ListLoader from "../../components/list-loader";
 import {useEffect, useState} from "react";
-import {GoGitPullRequest} from "react-icons/go";
 import authenticatedRoute from "../../components/authenticated-route";
+import PullRequestListItem from "../../components/pr-list-item";
 
 function PullRequests() {
 
@@ -33,7 +33,6 @@ function PullRequests() {
     }
 
     const repoReducer = (acc, value) => {
-      console.log(acc, value);
       if (!acc[value.repo.fullName]) {
         acc[value.repo.fullName] = [value];
         return acc;
@@ -79,26 +78,8 @@ function PullRequests() {
                 <ul className="">
                   {
                     pullRequests[groupKey].map((pr, index) => (
-                      <li key={`pr-${index}`} className="">
-                        {/*<div className="flex flex-row gap-2 items-center">*/}
-                        {/*  <p className="text-gray-500">{pullRequest.repo.fullName}</p>*/}
-                        {/*  <div className={`rounded-full text-xs py-1 px-3 ${isOpen ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>*/}
-                        {/*    {isOpen ? 'Open' : 'Closed'}*/}
-                        {/*  </div>*/}
-                        {/*</div>*/}
-                        <a href={pr.data.html_url} target="_blank" rel="noreferrer" className="flex flex-row items-center gap-2">
-                          <GoGitPullRequest/>
-                          <h3>
-                            {
-                              selectedGroup === 'branch' ?
-                                `${pr.repo.fullName} #${pr.data.number}` :
-                                `${pr.data.title} (#${pr.data.number})`
-                            }
-                          </h3>
-                        </a>
-                        {/*<p>Created by {pullRequest.data.user.login} on {toPrettyDate(pullRequest.createdOn)}</p>*/}
-                      </li>
-                    ))
+                      <PullRequestListItem key={`pr-${index}`} pullRequest={pr} mode={selectedGroup === 'branch' ? 'repo' : undefined}/>)
+                    )
                   }
                 </ul>
               </div>
@@ -118,13 +99,13 @@ function PullRequests() {
           {
             radioOptions.map((option, index) => (
               <div key={`option-${index}`} className="flex flex-row items-center gap-2 mx-2">
-                <input className="appearance-none border-gray-400 checked:bg-purple-400 checked:shadow-radio checked:border-purple-400 rounded-full p-3"
+                <input className="appearance-none cursor-pointer border-gray-400 checked:bg-purple-400 checked:shadow-radio checked:border-purple-400 rounded-full p-3"
                        type="radio"
                        defaultChecked={option.value === selectedGroup}
                        id={`option-${index}`}
                        name="groupBy"
                        value={option.value}/>
-                <label htmlFor={`option-${index}`}>{option.label}</label>
+                <label className="cursor-pointer" htmlFor={`option-${index}`}>{option.label}</label>
               </div>
             ))
           }
