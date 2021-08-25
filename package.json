@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:docker": "eval 'docker build -t gcr.io/gh-manager-324012/${npm_package_name}:${npm_package_version} .'",
     "start": "next start",
     "lint": "next lint"
   },
