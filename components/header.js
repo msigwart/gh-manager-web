@@ -50,7 +50,7 @@ export default function Header() {
                 <div className="text-gray-300 font-light text-sm">Last sync: {auth.user.lastSyncOn ? toPrettyDate(auth.user.lastSyncOn) : 'Never'}</div>
               </div> :
               <a className="text-black flex flex-row items-center gap-2"
-                 href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}&scope=repo`}
+                 href={process.env.GITHUB_AUTH_URL}
               >
                 Log in with Github <span className="text-2xl"><FaGithub/></span>
               </a>

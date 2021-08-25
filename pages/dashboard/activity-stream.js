@@ -42,8 +42,8 @@ function ActivityStream() {
                   <p className="text-gray-500">{issue.repo.fullName}</p>
                   {
                     isOpen ?
-                    <Badge color="green-800" background="green-200">Open</Badge> :
-                    <Badge color="red-800" background="red-200">Closed</Badge>
+                    <Badge color="text-green-800" background="bg-green-200">Open</Badge> :
+                    <Badge color="text-red-800" background="bg-red-200">Closed</Badge>
                   }
                 </div>
                 <a href={issue.data.html_url} target="_blank" rel="noreferrer" className="flex flex-row items-center gap-2">

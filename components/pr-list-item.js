@@ -5,20 +5,21 @@ export default function PullRequestListItem({pullRequest, mode }) {
 
   const StatusBadge = () => {
     if (pullRequest.data.state === 'closed' && pullRequest.data.merged_at) {
-      return <Badge color='purple-800' background="purple-300">Merged</Badge>
+      return <Badge color='text-purple-800' background="bg-purple-300">Merged</Badge>
     }
     if (pullRequest.data.state === 'closed') {
-      return <Badge color='red-800' background="red-200">Closed</Badge>
+      return <Badge color='text-red-800' background="bg-red-200">Closed</Badge>
     }
     if (!pullRequest.reviews.length) {
-      return <Badge color='yellow-600' background="yellow-200">Needs Review</Badge>
+      return <Badge color='text-yellow-600' background="bg-yellow-200">Needs Review</Badge>
     }
     if (pullRequest.reviews.find(el => el.data.state === 'APPROVED')) {
-      return <Badge color='green-800' background="green-200">Approved</Badge>
+      return <Badge color='text-green-800' background="bg-green-200">Approved</Badge>
     }
     if (pullRequest.reviews.find(el => el.data.state === 'CHANGES_REQUESTED')) {
-      return <Badge color='yellow-600' background="yellow-200">Changes Requested</Badge>
+      return <Badge color='text-yellow-600' background="bg-yellow-200">Changes Requested</Badge>
     }
+    return <Badge>In Review</Badge>
   }
 
   return (
