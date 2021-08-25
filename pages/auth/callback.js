@@ -13,7 +13,7 @@ export default function CallbackPage() {
       const { sessionId } = await api.post('/auth/session', { code });
       localStorage.setItem('sessionId', sessionId);
       await auth.mutateUser();
-      await router.push('/');
+      await router.push('/dashboard/repos');
     }
     if (!router.isReady) {
       return;

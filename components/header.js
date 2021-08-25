@@ -14,12 +14,12 @@ export default function Header() {
     try {
       await auth.mutateUser(undefined, false);
       await api.delete('/auth/session');
-      await router.push('/');
     } catch (e) {
       console.warn(e);
     } finally {
       localStorage.removeItem('sessionId');
       await auth.mutateUser();
+      await router.push('/');
     }
   }
 

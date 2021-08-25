@@ -7,11 +7,18 @@ module.exports = {
         'screen/2': '50vh',
         'screen/3': '33vh',
         'screen/4': '25vh',
+      },
+      boxShadow: {
+        'radio': '0px 0px 0px 2px white inset'
       }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['checked'],
+      borderColor: ['checked'],
+      boxShadow: ['checked']
+    }
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),

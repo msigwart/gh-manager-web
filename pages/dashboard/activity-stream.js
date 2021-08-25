@@ -3,22 +3,21 @@ import useSWR from "swr";
 import api from "../../lib/api";
 import ListLoader from "../../components/list-loader";
 import {GoGitPullRequest, GoIssueOpened} from "react-icons/go";
+import {toPrettyDate} from "../../utils";
 
 export default function ActivityStream() {
 
   const { data: issues, error, mutate } = useSWR('/repos/issues', api.get);
   const isLoading = !issues && !error;
 
-  const toPrettyDate = (timestamp) => {
-    const date = new Date(timestamp);
-    const options = { year: 'numeric', month: 'long', day: 'numeric', minute: 'numeric', hour: 'numeric' };
-    return `${date.toLocaleDateString(undefined, options)}`
-  }
-
   const Content = ({issues, isLoading, error}) => {
     if (isLoading) {
       return (
         <div>
+          <ListLoader/>
+          <ListLoader/>
+          <ListLoader/>
+          <ListLoader/>
           <ListLoader/>
         </div>
       )
