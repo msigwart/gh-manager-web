@@ -4,7 +4,7 @@ export default function WelcomeBanner() {
       <h1 className={`text-6xl font-light`}>
         Welcome to <span className={`font-bold`}>GH Manager.</span>
       </h1>
-      <p className={`text-xl`}>The easiest way to keep track of your GitHub Repositories.</p>
+      <p className={`text-xl`}>Keep track of issues and pull requests across different projects.</p>
     </section>
   )
 }
