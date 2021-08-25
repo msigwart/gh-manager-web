@@ -32,7 +32,7 @@ export default function ActivityStream() {
             const isPullRequest = issue.data.pull_request !== undefined
             const isOpen = issue.data.state === 'open'
             return (
-              <li key={`issue-${index}`} className="my-6">
+              <li key={`issue-${index}`} className="my-8">
                 <div className="flex flex-row gap-2 items-center">
                   <p className="text-gray-500">{issue.repo.fullName}</p>
                   <div className={`rounded-full text-xs py-1 px-3 ${isOpen ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}>
@@ -41,9 +41,9 @@ export default function ActivityStream() {
                 </div>
                 <a href={issue.data.html_url} target="_blank" rel="noreferrer" className="flex flex-row items-center gap-2">
                   { isPullRequest ? <GoGitPullRequest/> : <GoIssueOpened/>}
-                  <h2>{issue.data.title} (#{issue.data.number})</h2>
+                  <h2 className="my-0">{issue.data.title} (#{issue.data.number})</h2>
                 </a>
-                <p>{isPullRequest ? 'Pull Request' : 'Issue'} created by {issue.data.user.login} on {toPrettyDate(issue.createdOn)}</p>
+                <p className="">{isPullRequest ? 'Pull Request' : 'Issue'} created by {issue.data.user.login} on {toPrettyDate(issue.createdOn)}</p>
               </li>
             );
           })

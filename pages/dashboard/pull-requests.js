@@ -87,7 +87,13 @@ export default function PullRequests() {
                         {/*</div>*/}
                         <a href={pr.data.html_url} target="_blank" rel="noreferrer" className="flex flex-row items-center gap-2">
                           <GoGitPullRequest/>
-                          <h2>{pr.data.title} (#{pr.data.number})</h2>
+                          <h3>
+                            {
+                              selectedGroup === 'branch' ?
+                                `${pr.repo.fullName} #${pr.data.number}` :
+                                `${pr.data.title} (#${pr.data.number})`
+                            }
+                          </h3>
                         </a>
                         {/*<p>Created by {pullRequest.data.user.login} on {toPrettyDate(pullRequest.createdOn)}</p>*/}
                       </li>
