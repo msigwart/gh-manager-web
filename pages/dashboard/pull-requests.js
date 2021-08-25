@@ -1,7 +1,7 @@
 import DashboardLayout from "../../components/dashboard-layout";
 import useSWR from "swr";
 import api from "../../lib/api";
-import ListLoader from "../../components/list-loader";
+import Loader from "../../components/loader";
 import {useEffect, useState} from "react";
 import authenticatedRoute from "../../components/authenticated-route";
 import PullRequestListItem from "../../components/pr-list-item";
@@ -57,11 +57,9 @@ function PullRequests() {
     if (isLoading) {
       return (
         <div>
-          <ListLoader/>
-          <ListLoader/>
-          <ListLoader/>
-          <ListLoader/>
-          <ListLoader/>
+          <Loader type="pull"/>
+          <Loader type="pull"/>
+          <Loader type="pull"/>
         </div>
       )
     }

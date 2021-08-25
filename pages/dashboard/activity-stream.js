@@ -1,7 +1,7 @@
 import DashboardLayout from "../../components/dashboard-layout";
 import useSWR from "swr";
 import api from "../../lib/api";
-import ListLoader from "../../components/list-loader";
+import Loader from "../../components/loader";
 import {GoGitPullRequest, GoIssueOpened} from "react-icons/go";
 import {toPrettyDate} from "../../utils";
 import authenticatedRoute from "../../components/authenticated-route";
@@ -15,12 +15,12 @@ function ActivityStream() {
   const Content = ({issues, isLoading, error}) => {
     if (isLoading) {
       return (
-        <div>
-          <ListLoader/>
-          <ListLoader/>
-          <ListLoader/>
-          <ListLoader/>
-          <ListLoader/>
+        <div className="mt-12">
+          <Loader type="issue"/>
+          <Loader type="issue"/>
+          <Loader type="issue"/>
+          <Loader type="issue"/>
+          <Loader type="issue"/>
         </div>
       )
     }

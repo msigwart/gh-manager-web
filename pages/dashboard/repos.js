@@ -3,6 +3,7 @@ import useSWR from "swr";
 import api from "../../lib/api";
 import dynamic from "next/dynamic";
 import authenticatedRoute from "../../components/authenticated-route";
+import Loader from "../../components/loader";
 
 function Repos() {
 
@@ -18,29 +19,20 @@ function Repos() {
     }
   }
 
-  const ContentLoader = dynamic(
-    () => import('react-content-loader'),
-    { ssr: false }
-  );
-
-  const RepoLoader = () => {
-    return (
-      <ContentLoader viewBox="0 0 200 20">
-        {/* Only SVG shapes */}
-        <rect x="0" y="0" rx="5" ry="5" width="200" height="20" />
-      </ContentLoader>
-    )
-  }
-
   const Content = ({repos, isLoading, error}) => {
     if (isLoading) {
       return (
-        <div>
-          <RepoLoader/>
-          <RepoLoader/>
-          <RepoLoader/>
-          <RepoLoader/>
-          <RepoLoader/>
+        <div className="mt-12">
+          <Loader/>
+          <Loader/>
+          <Loader/>
+          <Loader/>
+          <Loader/>
+          <Loader/>
+          <Loader/>
+          <Loader/>
+          <Loader/>
+          <Loader/>
         </div>
       )
     }
