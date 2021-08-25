@@ -27,6 +27,9 @@ function ActivityStream() {
     if (error) {
       return <div>Could not load activity stream ({error.message})</div>
     }
+    if (!issues.length) {
+      return <p className="mt-3">No activities available. Have you selected a repo?</p>
+    }
     return (
       <ul className="mt-6">
         {

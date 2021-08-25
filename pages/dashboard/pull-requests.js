@@ -66,6 +66,9 @@ function PullRequests() {
     if (error) {
       return <div>Could not load pull requests ({error.message})</div>
     }
+    if (pullRequests && !Object.keys(pullRequests).length) {
+      return <p className="mt-3">No pull requests available. Have you selected a repo?</p>
+    }
     return (
       <div className="my-6">
         {
