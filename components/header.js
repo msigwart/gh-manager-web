@@ -45,7 +45,7 @@ export default function Header() {
                 Logged in as {auth.user.username} (<button className="font-bold text-black" onClick={logout}>Logout</button>)
               </div> :
               <a className="text-black flex flex-row items-center gap-2"
-                 href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`}
+                 href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}&scope=repo`}
               >
                 Log in with Github <span className="text-2xl"><FaGithub/></span>
               </a>
