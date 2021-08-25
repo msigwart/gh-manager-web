@@ -4,8 +4,9 @@ import api from "../../lib/api";
 import ListLoader from "../../components/list-loader";
 import {GoGitPullRequest, GoIssueOpened} from "react-icons/go";
 import {toPrettyDate} from "../../utils";
+import authenticatedRoute from "../../components/authenticated-route";
 
-export default function ActivityStream() {
+function ActivityStream() {
 
   const { data: issues, error, mutate } = useSWR('/repos/issues', api.get);
   const isLoading = !issues && !error;
@@ -59,3 +60,5 @@ export default function ActivityStream() {
     </DashboardLayout>
   )
 }
+
+export default authenticatedRoute(ActivityStream)

@@ -2,8 +2,9 @@ import DashboardLayout from "../../components/dashboard-layout";
 import useSWR from "swr";
 import api from "../../lib/api";
 import dynamic from "next/dynamic";
+import authenticatedRoute from "../../components/authenticated-route";
 
-export default function Repos() {
+function Repos() {
 
   const { data: repos, error, mutate } = useSWR('/repos', api.get);
   const isLoading = !repos && !error;
@@ -74,3 +75,5 @@ export default function Repos() {
     </DashboardLayout>
   )
 }
+
+export default authenticatedRoute(Repos)

@@ -4,8 +4,9 @@ import api from "../../lib/api";
 import ListLoader from "../../components/list-loader";
 import {useEffect, useState} from "react";
 import {GoGitPullRequest} from "react-icons/go";
+import authenticatedRoute from "../../components/authenticated-route";
 
-export default function PullRequests() {
+function PullRequests() {
 
   const { data: pullRequests, error, mutate } = useSWR('/repos/pulls', api.get);
   const isLoading = !pullRequests && !error;
@@ -133,3 +134,5 @@ export default function PullRequests() {
     </DashboardLayout>
   )
 }
+
+export default authenticatedRoute(PullRequests)
